@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getDailyStocksTimeSeries } from '../../../actions/stock-actions'
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
+import { getDailyStocksTimeSeries } from '../../../actions/stock-actions';
+import getSeriesData from '../../../utilities/global-functions';
 
 class DailyStocks extends Component {
     constructor(props) {
@@ -13,11 +16,35 @@ class DailyStocks extends Component {
     }
 
     render() {
+        if (this.props.dailyStocks) {
+            const stockSeriesData = getSeriesData(this.props.dailyStocks["Time Series (Daily)"])
+            const options = {
+                title: {
+                    text: "Daily Chart - MSFT"
+                },
+                rangeSelector: {
+                    selected: 6
+                },
+                series: [
+                    {
+                        name: "MSFT",
+                        data: stockSeriesData
+                    }
+                ]
+            } // END OPTIONS OBJ
+        
         return (
             <div>
-                
+                <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"stockChart"}
+                options={options}
+                />
             </div>
-        )
+            )
+        } else {
+            return <h5>Loading...</h5>
+        }
     }
 }
 
