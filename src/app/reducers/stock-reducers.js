@@ -41,5 +41,7 @@ export default function(state=initialState, action) {
                 ...state,
                 monthlyStockSeries: action.payload
             }
+            break
     }
+    return state
 }
