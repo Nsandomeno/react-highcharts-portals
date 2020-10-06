@@ -6,6 +6,8 @@ import 'redux';
 import 'react-redux';
 import 'redux-logger';
 import 'redux-thunk';
+import 'highcharts';
+import 'highcharts-react-official'
 
 //Third party packages
 import 'jquery';
