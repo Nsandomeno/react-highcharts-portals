@@ -12,6 +12,7 @@ export default class MainLayout extends Component {
         super(props);
     }
     render() {
+        let loading = "../images/loading.png";
         return (
             <div>
                 <HighchartsMenu />
@@ -21,10 +22,8 @@ export default class MainLayout extends Component {
                     </div>}>
                         <Switch>
                             <Route path="/" component={DashboardHome} exact />
-                            <Route path="/home" render={props => 
-                            <DashboardHome {...props} />} exact />
-                            <Route path="/stocks/daily" render={props => 
-                            <DailyStocks {...props} />} />
+                            <Route path="/home" render={props => <DashboardHome {...props} />} exact />
+                            <Route path="/stocks/daily" render={props => <DailyStocks {...props} />} />
                         </Switch>
                     </Suspense>
                 </main>
