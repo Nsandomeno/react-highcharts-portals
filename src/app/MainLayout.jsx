@@ -1,9 +1,11 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 
-import HighchartsMenu from "./components/navigation/presentation/HighchartsMenu";
-import DashboardHome from lazy(() => import("./components/dashboards/container/DashboardHome"));
-import DailyStocks from lazy(() => import("./components/stocks/container/DailyStocks"));
+import  HighchartsMenu from "./components/navigation/presentation/HighchartsMenu";
+
+const DashboardHome = lazy(() => import("./components/dashboards/container/DashboardHome"));
+const DailyStocks = lazy(() => import("./components/stocks/container/DailyStocks"))
+
 
 export default class MainLayout extends Component {
     constructor(props) {
